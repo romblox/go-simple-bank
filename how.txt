@@ -1,0 +1,7 @@
+// Create database
+docker exec -it db-tech-school /bin/sh
+createdb --username=root --owner=root simple_bank
+psql simple_bank
+\l
+\q
+
