@@ -5,3 +5,12 @@ psql simple_bank
 \l
 \q
 
+
+
+go test ./db/sqlc -run TestMain
+go test ./db/sqlc -run ^TestMain$
+
+Force retesting or disable test caching
+https://stackoverflow.com/questions/48882691/force-retesting-or-disable-test-caching
+go clean -testcache
+GOCACHE=off go test
