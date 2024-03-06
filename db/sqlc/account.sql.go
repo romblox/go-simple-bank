@@ -9,7 +9,7 @@ import (
 	"context"
 )
 
-const createAccount = `-- name: CreateAccount :one
+const createAccount = `-- name: CreateRandomAccount :one
 INSERT INTO accounts (
     owner,
     balance,
