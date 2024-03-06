@@ -33,3 +33,12 @@ db-psql:
 
 sqlc:
 	sqlc generate
+
+test:
+	go test -v -cover ./...
+
+test-wo-cache-1:
+	go test -v -cover -count=1 ./...
+
+test-wo-cache-2:
+	go clean -testcache && go test -v -cover ./...
