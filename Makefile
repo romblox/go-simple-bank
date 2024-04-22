@@ -13,14 +13,11 @@ db-stop:
 db-logs:
 	docker logs -f db-tech-school
 
-migration:
-	migrate create -ext sql -dir db/migrations -seq init_schema
+db-console:
+	docker exec -it db-tech-school psql -U root
 
-migrateup:
-	migrate -path db/migrations -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
-
-migratedown:
-	migrate -path db/migrations -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
+db-psql:
+	docker exec -it db-tech-school psql -U root simple_bank
 
 db-create-database:
 	docker exec -it db-tech-school createdb --username=root --owner=root simple_bank
@@ -28,8 +25,14 @@ db-create-database:
 db-drop:
 	docker exec -it db-tech-school dropdb simple_bank
 
-db-psql:
-	docker exec -it db-tech-school psql -U root simple_bank
+migrate:
+	migrate create -ext sql -dir db/migrations -seq init_schema
+
+migrate-up:
+	migrate -path db/migrations -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
+
+migrate-down:
+	migrate -path db/migrations -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
 sqlc:
 	sqlc generate
