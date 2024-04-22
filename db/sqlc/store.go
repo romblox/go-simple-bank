@@ -55,8 +55,6 @@ type TransferTxResult struct {
 	ToEntry     Entry    `json:"to_entry"`
 }
 
-var txKey = struct{}{}
-
 // TransferTx performs a money transfer from one account to other account
 func (s *Store) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
 	var result TransferTxResult
